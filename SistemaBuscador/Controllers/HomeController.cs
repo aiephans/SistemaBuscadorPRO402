@@ -23,6 +23,16 @@ namespace SistemaBuscador.Controllers
             return View();
         }
 
+        [HttpPost]
+        public IActionResult Login(LoginVIewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("Index",model);
+            }
+            return View("Privacy");
+        }
+
         public IActionResult Privacy()
         {
             return View();
