@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Inicio";
+    Layout = null;
+}
+
+@model LoginVIewModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistema Buscador</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="card card-login">
+            <div class="card-header bg-primary text-white">
+                <h3>Ingreso al sistema</h3>
+            </div>
+            <div class="card-body">
+                <form method="post" asp-controller="Login" asp-action="Login">
+                    <div class="form-group">
+                        <label asp-for="Usuario"></label>
+                        <input type="text" asp-for="Usuario" class="form-control" />
+                        <span class="text-danger" asp-validation-for="Usuario"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password"></label>
+                        <input type="password" asp-for="Password" class="form-control" />
+                        <span class="text-danger" asp-validation-for="Password"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Ingresar</button>
+                    <div asp-validation-summary="All" class="text-danger mt-3"></div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+</body>
+</html>
+
+
