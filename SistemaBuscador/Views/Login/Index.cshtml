@@ -13,6 +13,7 @@
     <title>Sistema Buscador</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
 <body>
     <div class="container">
@@ -29,7 +30,12 @@
                     </div>
                     <div class="form-group">
                         <label asp-for="Password"></label>
-                        <input type="password" asp-for="Password" class="form-control" />
+                        <div class="input-group-append">
+                            <input type="password" asp-for="Password" class="form-control" />
+                            <button id="boton-ojo" type="button" class="btn btn-secondary">
+                                <i id="icono-ojo" class="bi bi-eye"></i>
+                            </button>
+                        </div>
                         <span class="text-danger" asp-validation-for="Password"></span>
                     </div>
                     <button type="submit" class="btn btn-primary">Ingresar</button>
@@ -42,6 +48,24 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        $(document).ready(function () {
+
+            $("#boton-ojo").click(function () {
+                let tipo = $("#Password").attr("type");
+                console.log(tipo);
+                if (tipo == "password") {
+                    $("#Password").attr("type", "text");
+                    $("#icono-ojo").removeClass("bi-eye");
+                    $("#icono-ojo").addClass("bi-eye-slash");
+                } else {
+                    $("#Password").attr("type", "password");
+                    $("#icono-ojo").removeClass("bi-eye-slash");
+                    $("#icono-ojo").addClass("bi-eye");
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
