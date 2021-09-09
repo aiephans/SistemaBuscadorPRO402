@@ -1,0 +1,129 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="row">
+    <div class="col-md-6">
+        <h3>Listado de usuarios</h3>
+    </div>
+    <div class="col-md-6">
+        <a asp-action="NuevoUsuario" class="btn btn-primary float-right"><i class="bi bi-person-plus"></i> Nuevo</a>
+    </div>
+</div>
+
+<hr />
+<div class="card">
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Id
+                    </th>
+                    <th>
+                        Nombre de usuario
+                    </th>
+                    <th>
+                        Nombres
+                    </th>
+                    <th>
+                        Apellidos
+                    </th>
+                    <th>
+                        Rol
+                    </th>
+                    <th>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        1
+                    </td>
+                    <td>
+                        Usuario 1
+                    </td>
+                    <td>
+                        Nombres 1
+                    </td>
+                    <td>
+                        Apellidos 1
+                    </td>
+                    <td>
+                        Rol 1
+                    </td>
+                    <td>
+                        <button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button>
+                        <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        2
+                    </td>
+                    <td>
+                        Usuario 2
+                    </td>
+                    <td>
+                        Nombres 2
+                    </td>
+                    <td>
+                        Apellidos 2
+                    </td>
+                    <td>
+                        Rol 2
+                    </td>
+                    <td>
+                        <button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button>
+                        <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        3
+                    </td>
+                    <td>
+                        Usuario 3
+                    </td>
+                    <td>
+                        Nombres 3
+                    </td>
+                    <td>
+                        Apellidos 3
+                    </td>
+                    <td>
+                        Rol 3
+                    </td>
+                    <td>
+                        <button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button>
+                        <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        4
+                    </td>
+                    <td>
+                        Usuario 4
+                    </td>
+                    <td>
+                        Nombres 4
+                    </td>
+                    <td>
+                        Apellidos 4
+                    </td>
+                    <td>
+                        Rol 4
+                    </td>
+                    <td>
+                        <button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button>
+                        <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a asp-controller="Home" asp-action="Index" class="btn btn-success">Volver</a>
+    </div>
+</div>

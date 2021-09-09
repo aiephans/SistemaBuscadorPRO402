@@ -1,0 +1,44 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h3>Nuevo Usuario</h3>
+<hr />
+<div class="card">
+    <div class="card-body">
+        <form method="post">
+            <div class="form-group">
+                <label>Nombre usuario</label>
+                <input class="form-control" type="text" />
+            </div>
+            <div class="form-group">
+                <label>Nombres</label>
+                <input class="form-control" type="text" />
+            </div>
+            <div class="form-group">
+                <label>Apellidos</label>
+                <input class="form-control" type="text" />
+            </div>
+            <div class="form-group">
+                <label>Rol</label>
+                <select class="form-control">
+                    <option value="">--Seleccione--</option>
+                    <option value="1">Administrador</option>
+                    <option value="2">Supervisor</option>
+                    <option value="3">Vendedor</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Contraseña</label>
+                <input class="form-control" type="password" />
+            </div>
+            <div class="form-group">
+                <label>Repetir contraseña</label>
+                <input class="form-control" type="password" />
+            </div>
+            <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+            <button class="btn btn-primary" type="submit">Guardar</button>
+        </form>
+    </div>
+</div>
