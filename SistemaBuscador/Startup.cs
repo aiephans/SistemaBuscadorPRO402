@@ -33,6 +33,7 @@ namespace SistemaBuscador
             services.AddTransient<SessionFilter>();
             services.AddScoped<ILoginRepository, LoginRepositoryEF>();
             services.AddScoped<ICalculos, Calculos>();
+            services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddDbContext<ApplicationDbContext>(options=>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }

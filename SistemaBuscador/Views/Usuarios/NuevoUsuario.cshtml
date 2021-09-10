@@ -1,44 +1,57 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+
 }
+
+@model UsuarioCreacionModel
+
 <h3>Nuevo Usuario</h3>
 <hr />
+
 <div class="card">
     <div class="card-body">
-        <form method="post">
+        <div class="alert alert-success mt-3" role="alert">
+            *La contraseña debe tener al menos una Mayuscula, minusculas, digitos y al menos 8 caracteres
+        </div>
+        <form action="NuevoUsuario" method="post">
             <div class="form-group">
-                <label>Nombre usuario</label>
-                <input class="form-control" type="text" />
+                <label asp-for="NombreUsuario"></label>
+                <input asp-for="NombreUsuario" class="form-control" type="text" />
+                <span asp-validation-for="NombreUsuario" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label>Nombres</label>
-                <input class="form-control" type="text" />
+                <label asp-for="Nombres"></label>
+                <input asp-for="Nombres" class="form-control" type="text" />
+                <span asp-validation-for="Nombres" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label>Apellidos</label>
-                <input class="form-control" type="text" />
+                <label asp-for="Apellidos"></label>
+                <input asp-for="Apellidos" class="form-control" type="text" />
+                <span asp-validation-for="Apellidos" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label>Rol</label>
-                <select class="form-control">
+                <label asp-for="RolId"></label>
+                <select asp-for="RolId" class="form-control">
                     <option value="">--Seleccione--</option>
                     <option value="1">Administrador</option>
                     <option value="2">Supervisor</option>
                     <option value="3">Vendedor</option>
                 </select>
+                <span asp-validation-for="RolId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label>Contraseña</label>
-                <input class="form-control" type="password" />
+                <label asp-for="Password"></label>
+                <input asp-for="Password" class="form-control" type="password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label>Repetir contraseña</label>
-                <input class="form-control" type="password" />
+                <label asp-for="RePassword"></label>
+                <input asp-for="RePassword" class="form-control" type="password" />
+                <span asp-validation-for="RePassword" class="text-danger"></span>
             </div>
             <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
             <button class="btn btn-primary" type="submit">Guardar</button>
+
+
         </form>
     </div>
 </div>
