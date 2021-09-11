@@ -3,6 +3,8 @@
 *@
 @{
 }
+
+@model List<UsuarioListaModel>
 <div class="row">
     <div class="col-md-6">
         <h3>Listado de usuarios</h3>
@@ -38,90 +40,32 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>
-                        1
-                    </td>
-                    <td>
-                        Usuario 1
-                    </td>
-                    <td>
-                        Nombres 1
-                    </td>
-                    <td>
-                        Apellidos 1
-                    </td>
-                    <td>
-                        Rol 1
-                    </td>
-                    <td>
-                        <button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button>
-                        <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        2
-                    </td>
-                    <td>
-                        Usuario 2
-                    </td>
-                    <td>
-                        Nombres 2
-                    </td>
-                    <td>
-                        Apellidos 2
-                    </td>
-                    <td>
-                        Rol 2
-                    </td>
-                    <td>
-                        <button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button>
-                        <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        3
-                    </td>
-                    <td>
-                        Usuario 3
-                    </td>
-                    <td>
-                        Nombres 3
-                    </td>
-                    <td>
-                        Apellidos 3
-                    </td>
-                    <td>
-                        Rol 3
-                    </td>
-                    <td>
-                        <button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button>
-                        <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        4
-                    </td>
-                    <td>
-                        Usuario 4
-                    </td>
-                    <td>
-                        Nombres 4
-                    </td>
-                    <td>
-                        Apellidos 4
-                    </td>
-                    <td>
-                        Rol 4
-                    </td>
-                    <td>
-                        <button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button>
-                        <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                    </td>
-                </tr>
+                @foreach (var usuario in Model)
+                {
+                    <tr>
+                        <td>
+                            @usuario.Id
+                        </td>
+                        <td>
+                            @usuario.NombreUsuario
+                        </td>
+                        <td>
+                            @usuario.Nombres
+                        </td>
+                        <td>
+                            @usuario.Apellidos
+                        </td>
+                        <td>
+                            @usuario.Rol
+                        </td>
+                        <td>
+                            <a asp-action="ActualizarUsuario" asp-route-id="@usuario.Id" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Editar"><i class="bi bi-pencil-square"></i></a>
+                            <button class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="bi bi-trash"></i></button>
+                            <a asp-action="CambiarPassword" asp-route-id="@usuario.Id" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Cambiar contraseña"><i class="bi bi-key"></i></a>
+                        </td>
+                    </tr>
+                }
+
             </tbody>
         </table>
         <a asp-controller="Home" asp-action="Index" class="btn btn-success">Volver</a>
