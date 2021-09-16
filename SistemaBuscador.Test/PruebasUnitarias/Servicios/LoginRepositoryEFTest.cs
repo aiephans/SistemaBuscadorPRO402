@@ -1,7 +1,9 @@
 ﻿
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using SistemaBuscador.Entities;
 using SistemaBuscador.Repositories;
+using SistemaBuscador.Utilidades;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,13 +22,14 @@ namespace SistemaBuscador.Test.PruebasUnitarias.Servicios
             var context = BuildContext(nombreBd);
             context.Usuarios.Add(new Usuario() { NombreUsuario = "Usuario1", Password = "Password1" });
             await context.SaveChangesAsync();
-
             var context2 = BuildContext(nombreBd);
+            var seguridad = new Mock<ISeguridad>();
+            seguridad.Setup(x=>x.Encriptar(It.IsAny<string>())).Returns("aabbccddeeffgghhii");
 
             //Ejecucion
             var nombreUsuario = "Usuario2";
             var password = "password2";
-            var repo = new LoginRepositoryEF(context2);
+            var repo = new LoginRepositoryEF(context2,seguridad.Object);
             var respuesta = await repo.UserExist(nombreUsuario, password);
 
             //Verificacion
@@ -39,15 +42,16 @@ namespace SistemaBuscador.Test.PruebasUnitarias.Servicios
             //Preparacion
             var nombreBd = Guid.NewGuid().ToString();
             var context = BuildContext(nombreBd);
-            context.Usuarios.Add(new Usuario() { NombreUsuario = "Usuario1", Password = "Password1" });
+            context.Usuarios.Add(new Usuario() { NombreUsuario = "Usuario1", Password = "aabbccddeeffgghhii" });
             await context.SaveChangesAsync();
-
+            var seguridad = new Mock<ISeguridad>();
+            seguridad.Setup(x => x.Encriptar(It.IsAny<string>())).Returns("aabbccddeeffgghhii");
             var context2 = BuildContext(nombreBd);
 
             //Ejecucion
             var nombreUsuario = "Usuario1";
             var password = "Password1";
-            var repo = new LoginRepositoryEF(context2);
+            var repo = new LoginRepositoryEF(context2,seguridad.Object);
             var respuesta = await repo.UserExist(nombreUsuario, password);
 
             //Verificacion

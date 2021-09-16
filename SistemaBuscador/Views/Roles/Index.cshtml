@@ -1,0 +1,50 @@
+﻿@{
+}
+@model List<RolListaModelo>
+<div class="row">
+    <div class="col-md-6">
+        <h3>Listado de Roles</h3>
+    </div>
+    <div class="col-md-6">
+        <a asp-action="NuevoRol" class="btn btn-primary float-right"><i class="bi bi-person-plus"></i> Nuevo</a>
+    </div>
+</div>
+
+<hr />
+<div class="card">
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Id
+                    </th>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var rol in Model)
+                {
+                    <tr>
+                        <td>
+                            @rol.Id
+                        </td>
+                        <td>
+                            @rol.Nombre
+                        </td>
+                        <td>
+                            <a asp-action="ActualizarRol" asp-route-id="@rol.Id" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Editar"><i class="bi bi-pencil-square"></i></a>
+                            <a asp-action="EliminarRol" asp-route-id="@rol.Id" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="bi bi-trash"></i></a>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+        <a asp-controller="Home" asp-action="Index" class="btn btn-success">Volver</a>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+﻿@{
+}
+@model RolEdicionModel
+<h3>Actualziar Rol</h3>
+<hr />
+
+<div class="card">
+    <div class="card-body">
+        <form action="ActualizarRol" method="post">
+            <input asp-for="Id" type="hidden"  />
+            <div class="form-group">
+                <label asp-for="Nombre"></label>
+                <input asp-for="Nombre" class="form-control" type="text" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+
+            <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+            <button class="btn btn-primary" type="submit">Guardar</button>
+
+        </form>
+    </div>
+</div>
