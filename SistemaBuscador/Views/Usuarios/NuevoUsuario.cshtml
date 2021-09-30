@@ -30,11 +30,8 @@
             </div>
             <div class="form-group">
                 <label asp-for="RolId"></label>
-                <select asp-for="RolId" class="form-control">
+                <select asp-for="RolId" class="form-control" asp-items="Model.Roles">
                     <option value="">--Seleccione--</option>
-                    <option value="1">Administrador</option>
-                    <option value="2">Supervisor</option>
-                    <option value="3">Vendedor</option>
                 </select>
                 <span asp-validation-for="RolId" class="text-danger"></span>
             </div>

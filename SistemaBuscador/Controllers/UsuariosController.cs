@@ -22,10 +22,12 @@ namespace SistemaBuscador.Controllers
             return View(listaUsuario);
         }
 
-        public IActionResult NuevoUsuario()
+        public async Task<IActionResult> NuevoUsuario()
         {
-            return View();
+            var model = await _repository.NuevoUsuarioCreacion();
+            return View(model);
         }
+
         [HttpPost]
         public async Task<IActionResult> NuevoUsuario(UsuarioCreacionModel model)
         {

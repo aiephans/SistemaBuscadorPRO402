@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -29,5 +30,6 @@ namespace SistemaBuscador.Models
         [RegularExpression("^(?=\\w*\\d)(?=\\w*[A-Z])(?=\\w*[a-z])\\S{8,16}$", ErrorMessage = "La contraseña debe tener al menos una Mayuscula, minusculas, digitos y al menos 8 caracteres")]
         [Compare("Password",ErrorMessage ="Las contraseñas no son iguales")]
         public string RePassword { get; set; }
+        public SelectList Roles { get; set; }
     }
 }

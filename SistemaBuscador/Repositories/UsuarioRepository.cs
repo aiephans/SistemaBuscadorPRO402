@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using SistemaBuscador.Entities;
 using SistemaBuscador.Models;
 using SistemaBuscador.Utilidades;
@@ -13,11 +14,13 @@ namespace SistemaBuscador.Repositories
     {
         private readonly ApplicationDbContext _context;
         private readonly ISeguridad _seguridad;
+        private readonly IRolRepositorio _rolRepositorio;
 
-        public UsuarioRepository(ApplicationDbContext context, ISeguridad seguridad)
+        public UsuarioRepository(ApplicationDbContext context, ISeguridad seguridad, IRolRepositorio rolRepositorio)
         {
             _context = context;
             _seguridad = seguridad;
+            _rolRepositorio = rolRepositorio;
         }
         public async Task InsertatUsuario(UsuarioCreacionModel model)
         {
@@ -94,6 +97,14 @@ namespace SistemaBuscador.Repositories
             var usuario = await _context.Usuarios.FirstOrDefaultAsync(x => x.Id == id);
             _context.Usuarios.Remove(usuario);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<UsuarioCreacionModel> NuevoUsuarioCreacion()
+        {
+            var roles = await _rolRepositorio.ObtenerListaRoles();
+            var respuesta = new UsuarioCreacionModel();
+            respuesta.Roles = new SelectList(roles, "Id", "Nombre");
+            return respuesta;
         }
     }
 }
